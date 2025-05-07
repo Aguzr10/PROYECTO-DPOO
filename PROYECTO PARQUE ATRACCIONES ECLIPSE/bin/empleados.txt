@@ -1,0 +1,6 @@
+Romino Pérez,Familiar,Montaña Rusa
+Ana López,Alto,Barco Pirata
+Carlos García,Medio,Torre de Caída
+Romino Pérez,Familiar,Montaña Rusa
+Ana López,Alto,Barco Pirata
+Carlos García,Medio,Torre de Caída

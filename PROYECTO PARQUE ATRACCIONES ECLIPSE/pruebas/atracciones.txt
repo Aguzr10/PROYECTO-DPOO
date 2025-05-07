@@ -1,0 +1,3 @@
+Montaña Rusa Infernal,Montaña Rusa,1.40,100.0,Alto,true,true,true
+Barco Pirata,Familiar,0.0,0.0,Alto,false,false,false
+Torre de Caída,Acantilado,1.50,90.0,Medio,false,false,true
