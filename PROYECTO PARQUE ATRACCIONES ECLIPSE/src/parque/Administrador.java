@@ -55,5 +55,3 @@ public class Administrador extends Usuario {
         }
     }
 }
-
-//esto es una prueba
