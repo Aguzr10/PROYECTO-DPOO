@@ -7,15 +7,18 @@ public class OperadorAtracciones extends Empleados {
 
     private String nivelCapacitacion;
     private List<String> atraccionesCertificadas;
-    
+
     public OperadorAtracciones(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra,
-            String nombre, String turno, String lugarAsignado, String rol, double descuentoEmpleado, String nivelCapacitacion, List<String> atraccionesCertificadas) {
-        
+                                String nombre, String turno, String lugarAsignado, String rol,
+                                double descuentoEmpleado, String nivelCapacitacion, List<String> atraccionesCertificadas) {
         super(login, password, tiquetesComprados, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado);
         this.nivelCapacitacion = nivelCapacitacion;
         this.atraccionesCertificadas = new ArrayList<>();
+        if (atraccionesCertificadas != null) {
+            this.atraccionesCertificadas.addAll(atraccionesCertificadas);
+        }
     }
-    
+
     public String getNivelCapacitacion() {
         return nivelCapacitacion;
     }
@@ -29,7 +32,10 @@ public class OperadorAtracciones extends Empleados {
     }
 
     public void setAtraccionesCertificadas(List<String> atraccionesCertificadas) {
-        this.atraccionesCertificadas = atraccionesCertificadas;
+        this.atraccionesCertificadas = new ArrayList<>();
+        if (atraccionesCertificadas != null) {
+            this.atraccionesCertificadas.addAll(atraccionesCertificadas);
+        }
     }
 
     public void agregarCertifi(AtraccionMecanica atraccion) {
@@ -37,7 +43,7 @@ public class OperadorAtracciones extends Empleados {
             atraccionesCertificadas.add(atraccion.getNombre());
         }
     }
-    
+
     public boolean verfOperacion(AtraccionMecanica atraccion) {
         if (atraccion == null) {
             return false;
@@ -64,8 +70,14 @@ public class OperadorAtracciones extends Empleados {
         String rol = datos[6];
         double descuentoEmpleado = Double.parseDouble(datos[7]);
         String nivelCapacitacion = datos[8];
-        List<String> atraccionesCertificadas = List.of(datos[9].split(";"));
-        
-        return new OperadorAtracciones(login, password, null, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado, nivelCapacitacion, atraccionesCertificadas);
+        List<String> atraccionesCertificadas = new ArrayList<>();
+        if (datos.length > 9 && !datos[9].isEmpty()) {
+            for (String atr : datos[9].split(";")) {
+                atraccionesCertificadas.add(atr);
+            }
+        }
+
+        return new OperadorAtracciones(login, password, null, metodoCompra, nombre, turno, lugarAsignado, rol,
+                descuentoEmpleado, nivelCapacitacion, atraccionesCertificadas);
     }
 }

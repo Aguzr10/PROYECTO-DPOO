@@ -5,13 +5,13 @@ public class RestriccionMedica {
 	private boolean vertigo;
 	private boolean enfermedadCardiaca;
 	private boolean discapacidad;
-	
+
 	public RestriccionMedica(boolean vertigo, boolean enfermedadCardiaca, boolean discapacidad) {
 		this.vertigo = vertigo;
 		this.enfermedadCardiaca = enfermedadCardiaca;
 		this.discapacidad = discapacidad;
 	}
-	
+
 	public boolean isVertigo() {
 		return vertigo;
 	}
@@ -37,14 +37,20 @@ public class RestriccionMedica {
 	}
 
 	public boolean verificarAcceso(boolean vertigo, boolean enfermedadCardiaca, boolean discapacidad) {
-        
-		if ((this.vertigo && vertigo) || 
-            (this.enfermedadCardiaca && enfermedadCardiaca) || 
-            (this.discapacidad && discapacidad)) {
-            return false;
-        }
-
-        return true;
+		return !(this.vertigo && vertigo)
+			&& !(this.enfermedadCardiaca && enfermedadCardiaca)
+			&& !(this.discapacidad && discapacidad);
 	}
-	
+
+	public String serializar() {
+		return vertigo + "," + enfermedadCardiaca + "," + discapacidad;
+	}
+
+	public static RestriccionMedica deserializar(String linea) {
+		String[] partes = linea.split(",");
+		boolean vertigo = Boolean.parseBoolean(partes[0]);
+		boolean enfermedadCardiaca = Boolean.parseBoolean(partes[1]);
+		boolean discapacidad = Boolean.parseBoolean(partes[2]);
+		return new RestriccionMedica(vertigo, enfermedadCardiaca, discapacidad);
+	}
 }

@@ -37,27 +37,11 @@ public abstract class Tiquete {
     }
 
     public boolean verificarValidez() {
-        // TODO
-        return false;
+        return !usoValidado;
     }
 
     public void marcarTiquete() {
-        // TODO
-    }
-
-    // Constructor para pruebas: Este constructor es solo para pruebas.
-    // Permite crear un Tiquete de manera más sencilla sin depender de una implementación concreta.
-    public Tiquete(Categoria categoriaTiquete) {
-        this.categoriaTiquete = categoriaTiquete;
-        this.usoValidado = false;
-        this.precio = 10.0; // Un precio de prueba
-    }
-
-    // Método adicional para pruebas: Permite modificar atributos para pruebas sin afectar la lógica original.
-    public void setTiqueteParaPrueba(Categoria categoriaTiquete, boolean usoValidado, double precio) {
-        this.categoriaTiquete = categoriaTiquete;
-        this.usoValidado = usoValidado;
-        this.precio = precio;
+        this.usoValidado = true;
     }
 
     public String serializar() {

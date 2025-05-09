@@ -32,5 +32,21 @@ public class Temporada {
 	public long duracionEnDias() {
 		return ChronoUnit.DAYS.between(fechaInicio, fechaFin);
 	}
+	
+	public String serializar() {
+	    return fechaInicio.toString() + "," + fechaFin.toString();
+	}
+
+	
+	public static Temporada deserializar(String linea) {
+	    String[] partes = linea.split(",");
+	    LocalDate inicio = LocalDate.parse(partes[0]);
+	    LocalDate fin = LocalDate.parse(partes[1]);
+	    return new Temporada(inicio, fin);
+	}
+
+	
+	
+	
 
 }

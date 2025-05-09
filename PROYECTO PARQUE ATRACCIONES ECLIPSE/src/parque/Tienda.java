@@ -9,7 +9,17 @@ public class Tienda extends LugarServicio {
     }
 
     public void vender() {
-        //TODO
+        System.out.println("Venta realizada en la tienda de tipo: " + tipo);
+    }
+
+    @Override
+    public boolean necesitaCajero() {
+        return tipoPersonal != null && tipoPersonal.contains("cajero");
+    }
+
+    @Override
+    public boolean necesitaCocinero() {
+        return tipoPersonal != null && tipoPersonal.contains("cocinero");
     }
 
     @Override
