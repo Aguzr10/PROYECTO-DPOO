@@ -34,24 +34,37 @@ public class Administrador extends Usuario {
         if (empleado != null && turno != null && lugar != null) {
             empleado.setTurno(turno);
             empleado.setLugarAsignado(lugar.getTipo());
-            System.out.println("Turno asignado a " + empleado.getNombre() + " en " + lugar.getTipo());
-        } else {
-            System.out.println("No se pudo asignar turno: datos inválidos.");
         }
     }
 
     public void modificarEmpleado(Empleados empleado, String nuevoRol) {
         if (empleado != null && nuevoRol != null && !nuevoRol.isEmpty()) {
             empleado.setRol(nuevoRol);
-            System.out.println("Rol modificado a " + nuevoRol + " para " + empleado.getNombre());
-        } else {
-            System.out.println("No se pudo modificar el empleado: datos inválidos.");
         }
     }
 
     public void modificarAtraccion(Atracciones atraccion, Map<String, Object> cambios) {
-        if (atraccion != null) {
-           
+        if (atraccion != null && cambios != null) {
+            if (cambios.containsKey("nombre")) {
+                atraccion.setNombre((String) cambios.get("nombre"));
+            }
+            if (cambios.containsKey("capacidad")) {
+                atraccion.setCapacidad((Integer) cambios.get("capacidad"));
+            }
+            if (cambios.containsKey("ubicacion")) {
+                atraccion.setUbicacion((String) cambios.get("ubicacion"));
+            }
+            if (cambios.containsKey("nivelExclusividad")) {
+                atraccion.setNivelExclusividad((String) cambios.get("nivelExclusividad"));
+            }
+            if (cambios.containsKey("empleadosMinimos")) {
+                atraccion.setEmpleadosMinimos((Integer) cambios.get("empleadosMinimos"));
+            }
         }
+    }
+
+    @Override
+    public String serializar() {
+        return "ADMINISTRADOR;" + login + ";" + password + ";" + metodoCompra + ";" + descuentoEmpleado + ";" + nombre;
     }
 }

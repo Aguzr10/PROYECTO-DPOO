@@ -5,12 +5,12 @@ import java.util.List;
 public class Cocinero extends Empleados {
 
     public Cocinero(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre,
-            String turno, String lugarAsignado, String rol, double descuentoEmpleado) {
+                    String turno, String lugarAsignado, String rol, double descuentoEmpleado) {
         super(login, password, tiquetesComprados, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado);
     }
 
     public void cocinar() {
-        //TODO
+        System.out.println("Cocinero " + nombre + " está cocinando en " + lugarAsignado);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Cocinero extends Empleados {
         String lugarAsignado = datos[5];
         String rol = datos[6];
         double descuentoEmpleado = Double.parseDouble(datos[7]);
-        
+
         return new Cocinero(login, password, null, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado);
     }
 }

@@ -20,12 +20,23 @@ public class Cajero extends Empleados {
         this.tipoFuncion = tipoFuncion;
     }
 
-    public void registrarVenta() {
-        //TODO
+    public void registrarVenta(Tiquete tiquete) {
+        if (tiquete != null) {
+            tiquetesComprados.add(tiquete);
+            System.out.println("Venta registrada: " + tiquete.getId());
+        }
     }
     
     public boolean verificarTiquete(Atracciones atraccion) {
-        //TODO
+        if (atraccion == null || tiquetesComprados == null) return false;
+        for (Tiquete t : tiquetesComprados) {
+            if (!t.estaUsado() && t.verificaAcceso(atraccion)) {
+                t.setUsado(true);
+                System.out.println("Tiquete válido para " + atraccion.getNombre());
+                return true;
+            }
+        }
+        System.out.println("No hay tiquetes válidos para " + atraccion.getNombre());
         return false;
     }
 

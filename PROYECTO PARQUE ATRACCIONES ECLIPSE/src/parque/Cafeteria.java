@@ -9,12 +9,21 @@ public class Cafeteria extends LugarServicio {
     }
 
     public boolean verificarCocinero() {
-        //TODO
+        if (tipoPersonal == null || tipoPersonal.isEmpty()) return false;
+        for (String tipo : tipoPersonal) {
+            if (tipo.equalsIgnoreCase("cocinero")) {
+                return true;
+            }
+        }
         return false;
     }
 
     public void cocinar() {
-        //TODO
+        if (verificarCocinero()) {
+            System.out.println("Cocinando alimentos...");
+        } else {
+            System.out.println("No hay cocinero disponible para preparar alimentos.");
+        }
     }
 
     @Override

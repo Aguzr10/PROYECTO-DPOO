@@ -9,7 +9,7 @@ public class Cliente extends Usuario {
 
     public Cliente(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, List<Tiquete> historialCompras) {
         super(login, password, tiquetesComprados, metodoCompra);
-        this.historialCompras = historialCompras;
+        this.historialCompras = historialCompras != null ? historialCompras : new ArrayList<>();
     }
 
     public List<Tiquete> getHistorialCompras() {
@@ -17,21 +17,18 @@ public class Cliente extends Usuario {
     }
 
     public void agregarCompra(Tiquete tiquete) {
-        if (tiquete != null && !historialCompras.contains(tiquete)) {
+        if (tiquete != null) {
             historialCompras.add(tiquete);
+            if (tiquetesComprados != null) {
+                tiquetesComprados.add(tiquete);
+            }
         }
     }
 
-    // Constructor para pruebas: Este constructor es para facilitar las pruebas sin tener que proporcionar todos los datos.
-    // No forma parte del diseño UML original y solo se debe usar para facilitar la creación de objetos en los tests.
-    public Cliente(String login) {
-        super(login, "", null, "");
-        this.historialCompras = new ArrayList<>();
-    }
-
-    // Método adicional para pruebas: Permite agregar un tiquete directamente al historial.
-    // Es solo para pruebas y no forma parte de la lógica de negocio original.
-    public void setTiquete(Tiquete tiquete) {
-        this.historialCompras.add(tiquete);
+    public void mostrarHistorial() {
+        System.out.println("Historial de compras de " + login + ":");
+        for (Tiquete t : historialCompras) {
+            System.out.println(" - " + t.getDescripcion());
+        }
     }
 }
