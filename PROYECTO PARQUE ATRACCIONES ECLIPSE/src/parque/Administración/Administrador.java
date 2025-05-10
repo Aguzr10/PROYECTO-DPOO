@@ -13,9 +13,10 @@ public class Administrador extends Usuario {
     private String nombre;
     private double descuentoEmpleado;
 
-    public Administrador(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, double descuentoEmpleado) {
+    public Administrador(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, double descuentoEmpleado, String nombre) {
         super(login, password, tiquetesComprados, metodoCompra);
         this.descuentoEmpleado = descuentoEmpleado;
+        this.nombre = nombre;
     }
 
     public String getNombre() {
