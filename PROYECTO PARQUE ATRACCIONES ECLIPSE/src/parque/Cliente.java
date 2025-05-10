@@ -28,7 +28,7 @@ public class Cliente extends Usuario {
     public void mostrarHistorial() {
         System.out.println("Historial de compras de " + login + ":");
         for (Tiquete t : historialCompras) {
-            System.out.println(" - " + t.getDescripcion());
+            System.out.println(" - " + t.getCategoriaTiquete());
         }
     }
 }

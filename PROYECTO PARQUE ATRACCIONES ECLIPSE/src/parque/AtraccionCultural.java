@@ -22,7 +22,7 @@ public class AtraccionCultural extends Atracciones {
     }
 
     public boolean verificarEdad(int edad) {
-        return !restriccionEdad || edad >= 13; // ejemplo: no se permite si menor de 13 y hay restricción
+        return !restriccionEdad || edad >= 13; 
     }
 
     @Override
@@ -33,16 +33,16 @@ public class AtraccionCultural extends Atracciones {
     public static AtraccionCultural deserializar(String linea) {
         String[] partes = linea.split(";");
         AtraccionCultural atr = new AtraccionCultural(
-            partes[0], // tipo
-            List.of(partes[1].split(",")), // tipoPersonal
-            partes[2], // nombre
-            partes[3], // ubicacion
-            Integer.parseInt(partes[4]), // cupoMaximo
-            Integer.parseInt(partes[5]), // empleadosEncargados
-            Boolean.parseBoolean(partes[6]), // disponibilidadClima
-            Categoria.valueOf(partes[7]), // tipoTiquete
-            Temporada.valueOf(partes[8]), // temporada
-            Boolean.parseBoolean(partes[9]) // restriccionEdad
+            partes[0],
+            List.of(partes[1].split(",")), 
+            partes[2], 
+            partes[3], 
+            Integer.parseInt(partes[4]), 
+            Integer.parseInt(partes[5]), 
+            Boolean.parseBoolean(partes[6]), 
+            Categoria.valueOf(partes[7]), 
+            Temporada.valueOf(partes[8]), 
+            Boolean.parseBoolean(partes[9]) 
         );
         return atr;
     }

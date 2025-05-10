@@ -5,7 +5,7 @@ import java.util.List;
 public class Cajero extends Empleados {
 
     private String tipoFuncion;
-    
+
     public Cajero(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre,
             String turno, String lugarAsignado, String rol, double descuentoEmpleado, String tipoFuncion) {
         super(login, password, tiquetesComprados, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado);
@@ -23,15 +23,15 @@ public class Cajero extends Empleados {
     public void registrarVenta(Tiquete tiquete) {
         if (tiquete != null) {
             tiquetesComprados.add(tiquete);
-            System.out.println("Venta registrada: " + tiquete.getId());
+            System.out.println("Venta registrada: " + tiquete.isUsoValidado());
         }
     }
-    
+
     public boolean verificarTiquete(Atracciones atraccion) {
         if (atraccion == null || tiquetesComprados == null) return false;
         for (Tiquete t : tiquetesComprados) {
             if (!t.estaUsado() && t.verificaAcceso(atraccion)) {
-                t.setUsado(true);
+                t.estaUsado();
                 System.out.println("Tiquete válido para " + atraccion.getNombre());
                 return true;
             }
@@ -58,7 +58,7 @@ public class Cajero extends Empleados {
         String rol = datos[6];
         double descuentoEmpleado = Double.parseDouble(datos[7]);
         String tipoFuncion = datos[8];
-        
+
         return new Cajero(login, password, null, metodoCompra, nombre, turno, lugarAsignado, rol, descuentoEmpleado, tipoFuncion);
     }
 }

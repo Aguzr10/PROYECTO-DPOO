@@ -12,6 +12,8 @@ public abstract class Atracciones extends LugarServicio {
     protected boolean disponibilidadClima;
     protected Categoria tipoTiquete;
     protected Temporada temporada;
+    protected String nivelExclusividad;
+    protected int empleadosMinimos;
 
     public Atracciones(String tipo, List<String> tipoPersonal, String nombre, String ubicacion, int cupoMaximo,
                        int empleadosEncargados, boolean disponibilidadClima, Categoria tipoTiquete, Temporada temporada) {
@@ -23,6 +25,8 @@ public abstract class Atracciones extends LugarServicio {
         this.disponibilidadClima = disponibilidadClima;
         this.tipoTiquete = tipoTiquete;
         this.temporada = temporada;
+        this.nivelExclusividad = "Básico";  
+        this.empleadosMinimos = 0;  
     }
 
     public String getNombre() {
@@ -81,6 +85,26 @@ public abstract class Atracciones extends LugarServicio {
         this.temporada = temporada;
     }
 
+    public String getNivelExclusividad() {
+        return nivelExclusividad;
+    }
+
+    public void setNivelExclusividad(String nivelExclusividad) {
+        this.nivelExclusividad = nivelExclusividad;
+    }
+
+    public int getEmpleadosMinimos() {
+        return empleadosMinimos;
+    }
+
+    public void setEmpleadosMinimos(int empleadosMinimos) {
+        this.empleadosMinimos = empleadosMinimos;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.cupoMaximo = capacidad;
+    }
+
     public boolean esTemporal() {
         return temporada != Temporada.TODO_EL_AÑO;
     }
@@ -92,16 +116,23 @@ public abstract class Atracciones extends LugarServicio {
     public String mostrarInfo() {
         return "Nombre: " + nombre + ", Ubicación: " + ubicacion + ", Cupo: " + cupoMaximo +
                ", Requiere clima favorable: " + disponibilidadClima + ", Exclusividad: " + tipoTiquete +
-               ", Temporada: " + temporada;
+               ", Temporada: " + temporada + ", Nivel Exclusividad: " + nivelExclusividad +
+               ", Empleados Mínimos: " + empleadosMinimos;
     }
 
     public String serializar() {
         return super.serializar() + ";" + nombre + ";" + ubicacion + ";" + cupoMaximo + ";" +
-               empleadosEncargados + ";" + disponibilidadClima + ";" + tipoTiquete + ";" + temporada;
+               empleadosEncargados + ";" + disponibilidadClima + ";" + tipoTiquete + ";" + temporada +
+               ";" + nivelExclusividad + ";" + empleadosMinimos;
     }
 
     public static String[] deserializarDatos(String linea) {
         String[] datos = linea.split(";");
         return datos;
     }
+
+	public Object getCategoria() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

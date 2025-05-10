@@ -55,4 +55,15 @@ public abstract class Tiquete {
     public static String[] deserializarDatos(String linea) {
         return linea.split(",");
     }
+
+    public boolean estaUsado() {
+        return usoValidado;
+    }
+
+    public boolean verificaAcceso(Atracciones atraccion) {
+        if (atraccion.getCategoria() instanceof Categoria) {            
+            return this.categoriaTiquete.permiteAcceso((Categoria) atraccion.getCategoria());        }
+        return false; 
+    }
+
 }

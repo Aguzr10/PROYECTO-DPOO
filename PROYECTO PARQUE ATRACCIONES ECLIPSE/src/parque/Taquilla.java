@@ -9,7 +9,7 @@ public class Taquilla extends LugarServicio {
     }
 
     public boolean verificarTiquete(Tiquete tiquete) {
-        return tiquete != null && tiquete.isValido();
+        return tiquete != null && tiquete.isUsoValidado();
     }
 
     @Override

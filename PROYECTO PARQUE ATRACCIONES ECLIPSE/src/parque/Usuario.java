@@ -60,4 +60,24 @@ public abstract class Usuario implements Serializable {
             tiquetesComprados.add(t);
         }
     }
+
+    // Método para serializar los datos de Usuario
+    public String serializar() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(login).append(",")
+          .append(password).append(",")
+          .append(metodoCompra);
+          
+        // Serializamos la lista de tiquetes (si es necesario)
+        if (tiquetesComprados != null && !tiquetesComprados.isEmpty()) {
+            sb.append(",").append(tiquetesComprados.size());
+            for (Tiquete t : tiquetesComprados) {
+                sb.append(",").append(t.serializar()); // Usar el método serializar() de Tiquete
+            }
+        } else {
+            sb.append(",0");
+        }
+        
+        return sb.toString();
+    }
 }
