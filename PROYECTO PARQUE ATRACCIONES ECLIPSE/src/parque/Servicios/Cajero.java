@@ -24,12 +24,16 @@ public class Cajero extends Empleados {
         this.tipoFuncion = tipoFuncion;
     }
 
-    public void registrarVenta(Tiquete tiquete) {
+    public void registrarVenta(Tiquete tiquete, String productoAdicional) {
         if (tiquete != null) {
             tiquetesComprados.add(tiquete);
             System.out.println("Venta registrada: " + tiquete.isUsoValidado());
+            if (productoAdicional != null && !productoAdicional.isEmpty()) {
+                System.out.println("Producto adicional vendido: " + productoAdicional);
+            }
         }
     }
+
 
     public boolean verificarTiquete(Atracciones atraccion) {
         if (atraccion == null || tiquetesComprados == null) return false;

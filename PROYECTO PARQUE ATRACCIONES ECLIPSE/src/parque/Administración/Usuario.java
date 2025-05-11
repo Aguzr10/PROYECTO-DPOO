@@ -13,12 +13,14 @@ public abstract class Usuario implements Serializable {
     protected String password;
     protected List<Tiquete> tiquetesComprados;
     protected String metodoCompra;
+    protected String nombre;  
 
-    public Usuario(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra) {
+    public Usuario(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre) {
         this.login = login;
         this.password = password;
         this.tiquetesComprados = tiquetesComprados;
         this.metodoCompra = metodoCompra;
+        this.nombre = nombre;  
     }
 
     public String getLogin() {
@@ -53,6 +55,14 @@ public abstract class Usuario implements Serializable {
         this.metodoCompra = metodoCompra;
     }
 
+    public String getNombre() { 
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {  
+        this.nombre = nombre;
+    }
+
     public boolean autenticar(String password) {
         return this.password.equals(password);
     }
@@ -63,18 +73,19 @@ public abstract class Usuario implements Serializable {
         }
     }
 
-    // Método para serializar los datos de Usuario
+    
     public String serializar() {
         StringBuilder sb = new StringBuilder();
         sb.append(login).append(",")
           .append(password).append(",")
-          .append(metodoCompra);
-          
-        // Serializamos la lista de tiquetes (si es necesario)
+          .append(metodoCompra)
+          .append(",").append(nombre);  
+        
+        
         if (tiquetesComprados != null && !tiquetesComprados.isEmpty()) {
             sb.append(",").append(tiquetesComprados.size());
             for (Tiquete t : tiquetesComprados) {
-                sb.append(",").append(t.serializar()); // Usar el método serializar() de Tiquete
+                sb.append(",").append(t.serializar()); 
             }
         } else {
             sb.append(",0");

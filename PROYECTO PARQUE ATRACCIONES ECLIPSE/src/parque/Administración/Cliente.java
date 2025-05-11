@@ -9,8 +9,8 @@ public class Cliente extends Usuario {
 
     private List<Tiquete> historialCompras;
 
-    public Cliente(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, List<Tiquete> historialCompras) {
-        super(login, password, tiquetesComprados, metodoCompra);
+    public Cliente(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre, List<Tiquete> historialCompras) {
+        super(login, password, tiquetesComprados, metodoCompra, nombre); 
         this.historialCompras = historialCompras != null ? historialCompras : new ArrayList<>();
     }
 
@@ -28,7 +28,7 @@ public class Cliente extends Usuario {
     }
 
     public void mostrarHistorial() {
-        System.out.println("Historial de compras de " + login + ":");
+        System.out.println("Historial de compras de " + getNombre() + ":"); 
         for (Tiquete t : historialCompras) {
             System.out.println(" - " + t.getCategoriaTiquete());
         }

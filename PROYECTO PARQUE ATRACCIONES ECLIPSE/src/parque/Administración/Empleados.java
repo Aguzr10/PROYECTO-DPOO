@@ -6,8 +6,7 @@ import java.util.List;
 import parque.Tiquetes.Tiquete;
 
 public abstract class Empleados extends Usuario {
-    
-    protected String nombre;
+
     protected String turno;
     protected String lugarAsignado;
     protected String rol;
@@ -15,20 +14,11 @@ public abstract class Empleados extends Usuario {
     
     public Empleados(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, 
                      String nombre, String turno, String lugarAsignado, String rol, double descuentoEmpleado) {
-        super(login, password, tiquetesComprados, metodoCompra);
-        this.nombre = nombre;
+        super(login, password, tiquetesComprados, metodoCompra, nombre);  
         this.turno = turno;
         this.lugarAsignado = lugarAsignado;
         this.rol = rol;
         this.descuentoEmpleado = descuentoEmpleado;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getTurno() {
@@ -63,20 +53,21 @@ public abstract class Empleados extends Usuario {
         this.descuentoEmpleado = descuentoEmpleado;
     }
 
-    public String consultarAsignacion(LocalDate fecha) {
-        return "";
+    public String consultarAsignacion() {
+        return "Rol: " + rol + ", Turno: " + turno + ", Lugar: " + lugarAsignado;
     }
 
     public boolean verfTurnoDoble(LocalDate fecha) {
         return false;
     }
 
+    @Override
     public String serializar() {
         StringBuilder sb = new StringBuilder();
         sb.append(login).append(",");
         sb.append(password).append(",");
         sb.append(metodoCompra).append(",");
-        sb.append(nombre).append(",");
+        sb.append(getNombre()).append(",");  
         sb.append(turno).append(",");
         sb.append(lugarAsignado).append(",");
         sb.append(rol).append(",");
