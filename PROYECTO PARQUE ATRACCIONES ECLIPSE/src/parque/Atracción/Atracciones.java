@@ -1,5 +1,6 @@
 package parque.Atracción;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -7,7 +8,8 @@ import parque.Categorías.Categoria;
 import parque.Categorías.Temporada;
 import parque.Servicios.LugarServicio;
 
-public abstract class Atracciones extends LugarServicio {
+public abstract class Atracciones extends LugarServicio implements Serializable {
+    private static final long serialVersionUID = 1L; 
 
     protected String nombre;
     protected String ubicacion;

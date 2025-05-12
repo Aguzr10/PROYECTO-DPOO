@@ -1,5 +1,6 @@
 package parque.Administración;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,9 @@ import parque.Atracción.Atracciones;
 import parque.Servicios.LugarServicio;
 import parque.Tiquetes.Tiquete;
 
-public class Administrador extends Usuario {
+public class Administrador extends Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private double descuentoEmpleado;
 
@@ -60,6 +63,6 @@ public class Administrador extends Usuario {
 
     @Override
     public String serializar() {
-        return "ADMINISTRADOR;" + login + ";" + password + ";" + metodoCompra + ";" + descuentoEmpleado + ";" + getNombre();  // Usamos getNombre() que ahora está en Usuario
+        return "ADMINISTRADOR;" + login + ";" + password + ";" + metodoCompra + ";" + descuentoEmpleado + ";" + getNombre();
     }
 }

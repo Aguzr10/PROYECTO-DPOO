@@ -5,21 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import parque.Administración.Empleados;
+import parque.Administración.Cliente;
+import parque.Administración.Administrador;
 import parque.Atracción.Atracciones;
 import parque.Tiquetes.Tiquete;
 import parque.Servicios.LugarServicio;
 
 public class PersistenciaArchivo implements IPersistencia {
 
-   
     private static final String BASE_PATH = "datos/";
 
-    
     private String ruta(String archivo) {
         return BASE_PATH + archivo;
     }
 
-   
     private <T> void guardarObjeto(String archivo, List<T> lista) {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(ruta(archivo)))) {
             out.writeObject(lista);
@@ -29,7 +28,6 @@ public class PersistenciaArchivo implements IPersistencia {
         }
     }
 
-   
     @SuppressWarnings("unchecked")
     private <T> List<T> cargarObjeto(String archivo) {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(ruta(archivo)))) {
@@ -40,8 +38,6 @@ public class PersistenciaArchivo implements IPersistencia {
         }
     }
 
-    
-
     @Override
     public void guardarEmpleados(List<Empleados> empleados) {
         guardarObjeto("empleados.dat", empleados);
@@ -50,6 +46,26 @@ public class PersistenciaArchivo implements IPersistencia {
     @Override
     public List<Empleados> cargarEmpleados() {
         return cargarObjeto("empleados.dat");
+    }
+
+    @Override
+    public void guardarClientes(List<Cliente> clientes) {
+        guardarObjeto("clientes.dat", clientes);
+    }
+
+    @Override
+    public List<Cliente> cargarClientes() {
+        return cargarObjeto("clientes.dat");
+    }
+
+    @Override
+    public void guardarAdministradores(List<Administrador> administradores) {
+        guardarObjeto("administradores.dat", administradores);
+    }
+
+    @Override
+    public List<Administrador> cargarAdministradores() {
+        return cargarObjeto("administradores.dat");
     }
 
     @Override

@@ -1,9 +1,11 @@
 package parque.Tiquetes;
 
+import java.io.Serializable;
 import parque.Atracción.Atracciones;
 import parque.Categorías.Categoria;
 
-public abstract class Tiquete {
+public abstract class Tiquete implements Serializable {
+    private static final long serialVersionUID = 1L;  
 
     protected Categoria categoriaTiquete;
     protected boolean usoValidado;

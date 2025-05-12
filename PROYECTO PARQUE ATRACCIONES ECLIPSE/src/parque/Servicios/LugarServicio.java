@@ -1,16 +1,18 @@
 package parque.Servicios;
 
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class LugarServicio {
-	
-	protected String tipo;
-	protected List<String> tipoPersonal;
+public abstract class LugarServicio implements Serializable {
+    private static final long serialVersionUID = 1L;  
 
-	public LugarServicio(String tipo, List<String> tipoPersonal) {
-		this.tipo = tipo;
-		this.tipoPersonal = tipoPersonal;
-	}
+    protected String tipo;
+    protected List<String> tipoPersonal;
+
+    public LugarServicio(String tipo, List<String> tipoPersonal) {
+        this.tipo = tipo;
+        this.tipoPersonal = tipoPersonal;
+    }
 
 	public String getTipo() {
 		return tipo;

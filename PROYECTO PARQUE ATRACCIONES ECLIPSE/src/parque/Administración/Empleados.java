@@ -1,11 +1,14 @@
 package parque.Administración;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
 import parque.Tiquetes.Tiquete;
 
-public abstract class Empleados extends Usuario {
+public abstract class Empleados extends Usuario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     protected String turno;
     protected String lugarAsignado;
@@ -67,7 +70,7 @@ public abstract class Empleados extends Usuario {
         sb.append(login).append(",");
         sb.append(password).append(",");
         sb.append(metodoCompra).append(",");
-        sb.append(getNombre()).append(",");  
+        sb.append(getNombre()).append(",");
         sb.append(turno).append(",");
         sb.append(lugarAsignado).append(",");
         sb.append(rol).append(",");
