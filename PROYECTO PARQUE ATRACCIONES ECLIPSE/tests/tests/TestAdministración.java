@@ -67,6 +67,7 @@ public class TestAdministración {
 	@Test
 	void testAutenticar() {
 		assertTrue(cliente.autenticar(passwordCliente), "La autenticación falló!");
+		assertFalse(cliente.autenticar(passwordEmpleado), "La autenticación no funciona correctamente!");
 	}
 	
 	@Test
