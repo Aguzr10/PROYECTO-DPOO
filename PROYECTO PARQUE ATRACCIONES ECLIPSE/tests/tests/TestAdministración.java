@@ -71,7 +71,7 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarCliente() {
-		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,2,ORO,false,70000.0,DIAMANTE,flase,100000.0,false", 
+		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,2,ORO,false,70000.0,DIAMANTE,false,100000.0,false", 
 				cliente.serializar(), "La serialización del Cliente no fue la esperada!");
 	}
 	
@@ -80,8 +80,13 @@ public class TestAdministración {
 		assertEquals("Historial de compras de doimedez.dz20: - ORO - DIAMANTE",
 				cliente.getHistorialCompras(), "El historial de compras no fue el esperado!");
 	}
-	
-	
+
+	@Test
+	void testModificarEmpleadoPorAdmin() {
+	    admin.modificarEmpleado(cocinero, "chef ejecutivo");
+	    assertEquals("chef ejecutivo", cocinero.getRol(), "El administrador no logró modificar el rol del empleado!");
+	}
+
 	@AfterAll
 	void tearDown() throws Exception {}
 }
