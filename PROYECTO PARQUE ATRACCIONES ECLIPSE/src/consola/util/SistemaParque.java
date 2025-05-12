@@ -1,5 +1,11 @@
 package consola.util;
 
-public class SistemaParque {
-    // Pendiente: Cargar y guardar todos los datos del sistema
-}
+import java.util.List;
+import parque.Administración.Cliente;
+import parque.Administración.Empleados;
+import parque.Atracción.Atracciones;
+import parque.Persistencia.PersistenciaArchivo;
+import parque.Persistencia.IPersistencia;
+
+
+
