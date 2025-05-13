@@ -24,7 +24,7 @@ public class TestCategorías {
 	
 	@Test
 	void testSerializar() {
-		assertEquals("2025-1-25,2025-5-31", temporada.serializar(), "La serialización de la temporada no fue la esperada!");
+		assertEquals("2025-01-25,2025-05-31", temporada.serializar(), "La serialización de la temporada no fue la esperada!");
 	}
 	
 	@Test

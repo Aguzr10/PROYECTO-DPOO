@@ -117,12 +117,12 @@ public class TestAtracción {
 	
 	@Test
 	void testSerializarEspectaculo() {
-		assertEquals("2025-1-25,1:00PM,Desfile Apertura", espectáculo.serializar(), "La serialización del Espetáculo falló!");
+		assertEquals("2025-01-25,1:00PM,Desfile Apertura", espectáculo.serializar(), "La serialización del Espetáculo falló!");
 	}
 	
 	@Test
 	void testMostrarInfo() {
-		assertEquals("Espectáculo: Desfile Apertura - Fecha: 2025-1-25 - Hora: 1:00PM", espectáculo.mostrarInfo(), "La información mostrada no fue la esperada!");
+		assertEquals("Espectáculo: Desfile Apertura - Fecha: 2025-01-25 - Hora: 1:00PM", espectáculo.mostrarInfo(), "La información mostrada no fue la esperada!");
 	}
 	
 	@AfterAll
