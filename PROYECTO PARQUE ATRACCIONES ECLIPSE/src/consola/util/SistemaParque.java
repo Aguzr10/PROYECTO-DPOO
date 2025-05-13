@@ -18,7 +18,7 @@ public class SistemaParque {
 
     private static SistemaParque instancia = null;
 
-    private SistemaParque() {
+    public SistemaParque() {
         this.persistencia = new PersistenciaArchivo();
     }
 
