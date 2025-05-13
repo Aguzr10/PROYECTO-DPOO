@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestAdministración {
 	// ATRIBUTOS E INSTANCIAS
-	private String nombreAdmin = "Luis Díaz",
+	private static String nombreAdmin = "Luis Díaz",
 				   loginAdmin = "l.diaz7",
 				   passwordAdmin = "luisDM223", 
 				   
@@ -29,21 +29,21 @@ public class TestAdministración {
 				   turno = "Doble turno",
 				   rol = "cocinera/cajera",
 				   metodoCompra = "taquilla virtual";
-	private double descuentoEmpleado = 0.15;
+	private static double descuentoEmpleado = 0.15;
 	
-	TiqueteBasico tiqueteOro = new TiqueteBasico(Categoria.ORO, false, 70000.0, false),
+	static TiqueteBasico tiqueteOro = new TiqueteBasico(Categoria.ORO, false, 70000.0, false),
 				  tiqueteDiamante = new TiqueteBasico(Categoria.DIAMANTE, false, 100000.0, false);
 	
-	private List<Tiquete> tiquetesComprados = new ArrayList<>(), 
+	private static List<Tiquete> tiquetesComprados = new ArrayList<>(), 
 	                      historialCompras = new ArrayList<>();
 	
-	private Administrador admin;
-	private Cocinero cocinero;
-	private Cliente cliente;
+	private static Administrador admin;
+	private static Cocinero cocinero;
+	private static Cliente cliente;
 	               
 	// TESTS
 	@BeforeAll
-	void setUp() {	
+	public static void setUp() {	
 		admin = new Administrador(loginAdmin, passwordAdmin, tiquetesComprados, metodoCompra, descuentoEmpleado, nombreAdmin);
 		cocinero = new Cocinero(loginEmpleado, passwordEmpleado, tiquetesComprados, metodoCompra,
 				                nombreEmpleado, turno, lugarAsignado, rol, descuentoEmpleado);
@@ -89,5 +89,5 @@ public class TestAdministración {
 	}
 
 	@AfterAll
-	void tearDown() throws Exception {}
+	public static void tearDown() throws Exception {}
 }

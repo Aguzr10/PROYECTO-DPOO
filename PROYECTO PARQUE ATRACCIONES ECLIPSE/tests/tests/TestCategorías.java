@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 
 public class TestCategorías {
 	// ATRIBUTOS E INSTANCIAS A USAR
-	private LocalDate fechaInicio = LocalDate.of(2025, 1, 25),
+	private static  LocalDate fechaInicio = LocalDate.of(2025, 1, 25),
 					  fechaIntermedia = LocalDate.of(2025, 3, 15),
 					  fechaFinal = LocalDate.of(2025, 5, 31),
 					  fechaPasada = LocalDate.of(2025, 6, 1);
-	private Temporada temporada;
+	private static Temporada temporada;
 	
 	@BeforeAll
-	void setUp() {
+	public static void setUp() {
 		temporada = new Temporada(fechaInicio, fechaFinal);
 	}
 	
@@ -39,5 +39,5 @@ public class TestCategorías {
 	}
 	
 	@AfterAll
-	void tearDown() {}
+	public static void tearDown() {}
 }

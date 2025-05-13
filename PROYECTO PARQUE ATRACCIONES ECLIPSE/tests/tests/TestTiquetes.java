@@ -13,16 +13,16 @@ import org.junit.jupiter.api.Test;
 
 public class TestTiquetes {
 	// ATRIBUTOS E INSTANCIAS A USAR
-	private LocalDate fechaDisponibilidad, fechaInicio, fechaFinal;
-	private Categoria categoriaTiquete;
-	private boolean usoValidado, entradaParque;
-	private double precio;
-	private Atracciones atraccion;
+	private static LocalDate fechaDisponibilidad, fechaInicio, fechaFinal;
+	private static Categoria categoriaTiquete;
+	private static boolean usoValidado, entradaParque;
+	private static double precio;
+	private static Atracciones atraccion;
 	
-	private FastPass fastPass;
-	private TiqueteBasico básico;
-	private TiqueteIndividual individual;
-	private TiqueteTemporada temporada;
+	private static FastPass fastPass;
+	private static TiqueteBasico básico;
+	private static TiqueteIndividual individual;
+	private static TiqueteTemporada temporada;
 	
 	void setUp() {
 		fastPass = new FastPass(fechaDisponibilidad);

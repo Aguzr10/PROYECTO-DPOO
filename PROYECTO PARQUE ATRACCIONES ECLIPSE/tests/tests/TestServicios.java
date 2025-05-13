@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestServicios {
 	// ATRIBUTOS E INSTANCIAS A USAR
-	private String tipoCocina = "Cocina",
+	private static String tipoCocina = "Cocina",
 				   tipoPersonalCocinero = "Cocinero",
 				   tipoCajero = "Cajero", // Aplica para personal también
 				   tipoTaquilla = "Taquilla",
@@ -31,23 +31,23 @@ public class TestServicios {
 				   rol = "cocinera/cajera",
 				   tipoFuncion = "Cocinero";
 	
-	private List<String> tipoPersonalCafeteria = new ArrayList<String>(),
+	private static List<String> tipoPersonalCafeteria = new ArrayList<String>(),
 						 tipoPersonalTaquilla = new ArrayList<String>(), 
 						 tipoPersonalTienda = new ArrayList<String>();
 	
-	private Tiquete tiqueteFamiliar = new TiqueteBasico(Categoria.FAMILIAR, false, 50000.0, false);;
-	private List<Tiquete> tiquetesComprados = new ArrayList<Tiquete>();
-	private double descuentoEmpleado = 0.15;
-	private LocalDateTime ultimaLimpieza = LocalDateTime.of(2025, 5, 11, 17, 45),
+	private static Tiquete tiqueteFamiliar = new TiqueteBasico(Categoria.FAMILIAR, false, 50000.0, false);;
+	private static List<Tiquete> tiquetesComprados = new ArrayList<Tiquete>();
+	private static double descuentoEmpleado = 0.15;
+	private static LocalDateTime ultimaLimpieza = LocalDateTime.of(2025, 5, 11, 17, 45),
 						  ultimoMantenimiento = LocalDateTime.of(2025, 5, 11, 14, 30);
 	
-	private Cafeteria cafeteria;
-	private Taquilla taquilla;
-	private Cajero cajero;
-	private Tienda tienda;
+	private static Cafeteria cafeteria;
+	private static Taquilla taquilla;
+	private static Cajero cajero;
+	private static Tienda tienda;
 	
 	@BeforeAll
-	void setUp() {
+	public static void setUp() {
 		tipoPersonalCafeteria.add(tipoPersonalCocinero);
 		tipoPersonalCafeteria.add(tipoCajero);
 		tipoPersonalTaquilla.add(tipoPersonalTaquillero);
@@ -98,5 +98,5 @@ public class TestServicios {
 	}
 	
 	@AfterAll
-	void tearDown() throws Exception {}
+	public static void tearDown() throws Exception {}
 }

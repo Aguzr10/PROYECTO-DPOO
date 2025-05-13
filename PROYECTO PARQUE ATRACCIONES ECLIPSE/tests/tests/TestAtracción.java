@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 public class TestAtracción {
 	// ATRIBUTOS A USAR E INSTANCIAS
-	private String nombreCultural = "Barco Pirata",
+	private static String nombreCultural = "Barco Pirata",
 				   nombreMecanica = "Montaña Rusa Infernal",
 				   nombreEspectaculo = "Desfile Apertura",
 				   ubicacionCultural = "Lago", 
@@ -23,37 +23,37 @@ public class TestAtracción {
 				   nivelRiesgo = "Alto",
 				   hora = "1:00PM";
 	
-	private double alturaMin = 1.2,
+	private static double alturaMin = 1.2,
 				   alturaMax = 2.0,
 				   pesoMin = 49.0,
 				   pesoMax = 99.0;
 	
-	private int cupoMaximoCultural = 30,
+	private static int cupoMaximoCultural = 30,
 			cupoMaximoMecanica = 16,
 			empleadosEncargadosCultural = 4,
 			empleadosEncargadosMecanica = 2;
 	
-	private List<String> tipoPersonalCultural = new ArrayList<String>(),
+	private static List<String> tipoPersonalCultural = new ArrayList<String>(),
 						 tipoPersonalMecanica = new ArrayList<String>();
 	
-	private boolean disponibilidadClima = true,
+	private static boolean disponibilidadClima = true,
 			restriccionEdad = true;
 	
-	private Categoria tipoTiqueteCultural = Categoria.BASICO,
+	private static Categoria tipoTiqueteCultural = Categoria.BASICO,
 					  tipoTiqueteMecanica = Categoria.ORO;
 	
-	private LocalDate fechaInicio = LocalDate.of(2025, 1, 25),
+	private static LocalDate fechaInicio = LocalDate.of(2025, 1, 25),
 					  fechaCierre = LocalDate.of(2025, 5, 31);
 	
-	private Temporada temporadaCultural, temporadaMecanica;
-	private RestriccionMedica restriccion;
+	private static Temporada temporadaCultural, temporadaMecanica;
+	private static RestriccionMedica restriccion;
 	
-	private AtraccionCultural cultural;
-	private AtraccionMecanica mecánica;
-	private Espectaculo espectáculo;
+	private static AtraccionCultural cultural;
+	private static AtraccionMecanica mecánica;
+	private static Espectaculo espectáculo;
 	
 	@BeforeAll
-	void setUp() {
+	public static void setUp() {
 		tipoPersonalCultural.add("actor capitán");
 		tipoPersonalCultural.add("actor tripulación");
 		tipoPersonalCultural.add("seguridad");
@@ -126,5 +126,5 @@ public class TestAtracción {
 	}
 	
 	@AfterAll
-	void tearDown() {}
+	public static void tearDown() {}
 }
