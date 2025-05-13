@@ -1,6 +1,7 @@
 package parque.Atracción;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import parque.Categorías.Categoria;
@@ -126,8 +127,10 @@ public abstract class Atracciones extends LugarServicio {
 
     public String serializar() {
         return super.serializar() + ";" + nombre + ";" + ubicacion + ";" + cupoMaximo + ";" +
-               empleadosEncargados + ";" + disponibilidadClima + ";" + tipoTiquete + ";" + temporada +
-               ";" + nivelExclusividad + ";" + empleadosMinimos;
+               empleadosEncargados + ";" + disponibilidadClima + ";" + tipoTiquete + ";" +
+               temporada.getFechaInicio().format(DateTimeFormatter.ISO_DATE) + "," +
+               temporada.getFechaFin().format(DateTimeFormatter.ISO_DATE) + ";" +
+               nivelExclusividad + ";" + empleadosMinimos;
     }
 
     public static String[] deserializarDatos(String linea) {

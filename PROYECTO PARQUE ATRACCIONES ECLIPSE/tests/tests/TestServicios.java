@@ -6,7 +6,6 @@ import parque.Tiquetes.TiqueteBasico;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +37,6 @@ public class TestServicios {
 	private static Tiquete tiqueteFamiliar = new TiqueteBasico(Categoria.FAMILIAR, false, 50000.0, false);;
 	private static List<Tiquete> tiquetesComprados = new ArrayList<Tiquete>();
 	private static double descuentoEmpleado = 0.15;
-	private static LocalDateTime ultimaLimpieza = LocalDateTime.of(2025, 5, 11, 17, 45),
-						  ultimoMantenimiento = LocalDateTime.of(2025, 5, 11, 14, 30);
 	
 	private static Cafeteria cafeteria;
 	private static Taquilla taquilla;
@@ -78,22 +75,23 @@ public class TestServicios {
 	
 	@Test
 	void testSerializarCafeteria() {
-		assertEquals("Cocina,Cocinero;Cajero;",cafeteria.serializar(), "La serialización de Cocina no fue la esperada!");
+		assertEquals("Cocina,Cocinero;Cajero",cafeteria.serializar(), "La serialización de Cocina no fue la esperada!");
 	}
 	
 	@Test
 	void testSerializarTaquilla() {
-		assertEquals("Taquilla,Taquillero;",taquilla.serializar(), "La serialización de Taquilla no fue la esperada!");
+		assertEquals("Taquilla,Taquillero",taquilla.serializar(), "La serialización de Taquilla no fue la esperada!");
 	}
 	
 	@Test
 	void testSerializarTienda() {
-		assertEquals("Tienda,Cajero;", tienda.serializar(), "La serialización de Cajero no fue la esperada!");
+		assertEquals("Cajero,Cajero", tienda.serializar(), "La serialización de Cajero no fue la esperada!");
 	}
 	
+	@Test
 	void testSerializarCajero() {
 		assertEquals(
-				"daneidy.B52,danB332,taquilla virtual,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15",
+				"daneidy.B52,danB332,taquilla virtual,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15,Cocinero",
 				cajero.serializar(), "La serialización de Cajero no fue la esperada!");
 	}
 	

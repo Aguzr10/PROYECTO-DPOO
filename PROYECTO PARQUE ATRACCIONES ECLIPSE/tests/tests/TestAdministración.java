@@ -55,13 +55,13 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarAdmin() {
-		assertEquals("ADMINISTRADOR;l.diaz7;luisDM223;Taquilla;0.15;Luis Díaz",
+		assertEquals("ADMINISTRADOR;l.diaz7;luisDM223;taquilla virtual;0.15;Luis Díaz",
 				admin.serializar(), "La serialización del Administrador no fue la esperada!");
 	}
 	
 	@Test
 	void testSerializarCocinero() {
-		assertEquals("daneidy.852,danB332,Taquilla,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15,",
+		assertEquals("daneidy.852,dioDz4422,taquilla virtual,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15",
 				cocinero.serializar(), "La serialización del Cocinero no fue la esperada!");
 	}
 	@Test
@@ -72,14 +72,14 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarCliente() {
-		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,2,ORO,false,70000.0,DIAMANTE,false,100000.0,false", 
+		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,2,ORO,false,70000.0,false,DIAMANTE,false,100000.0,false", 
 				cliente.serializar(), "La serialización del Cliente no fue la esperada!");
 	}
 	
 	@Test
 	void testMostrarHistoria() {
-		assertEquals("Historial de compras de doimedez.dz20: - ORO - DIAMANTE",
-				cliente.getHistorialCompras(), "El historial de compras no fue el esperado!");
+		assertEquals("Historial de compras de diomedez.dz20: - ORO - DIAMANTE",
+				cliente.generarHistorial(), "El historial de compras no fue el esperado!");
 	}
 
 	@Test

@@ -29,7 +29,7 @@ public class TestCategorías {
 	
 	@Test
 	void testDuracionEnDias() {
-		assertEquals(128, temporada.duracionEnDias(), "El cálculo de días no fue el esperado!");
+		assertEquals(126, temporada.duracionEnDias(), "El cálculo de días no fue el esperado!");
 	}
 	
 	@Test

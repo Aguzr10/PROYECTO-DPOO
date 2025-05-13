@@ -1,7 +1,6 @@
 package tests;
 
 import parque.Atracción.AtraccionMecanica;
-import parque.Atracción.Atracciones;
 import parque.Atracción.RestriccionMedica;
 import parque.Categorías.Categoria;
 import parque.Categorías.Temporada;
@@ -29,8 +28,7 @@ public class TestTiquetes {
 
 	private static double precioTiqueteTemporadaDiamante = 70000.0,
 			precioTiqueteBasico = 30000.0,
-			precioTiqueteAtraccion = 12000.0,
-			precioFastPass = 20000.0;
+			precioTiqueteAtraccion = 12000.0;
 
 	private static AtraccionMecanica mecánica;
 

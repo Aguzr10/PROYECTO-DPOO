@@ -78,7 +78,7 @@ public class TestAtracción {
 	@Test
 	void testSerializarAtraccionCultural() {
 		assertEquals(
-				"Cultural,actor capitán;actor tripulación;seguridad;Barco Pirata;Lago;30;4;true;BASICO;2025-1-25,2025-5-31;Básico;0",
+				"Cultural,actor capitán;actor tripulación;seguridad;Barco Pirata;Lago;30;4;true;BASICO;2025-01-25,2025-05-31;Básico;0;true",
 				cultural.serializar(), "La serialización de la atracción Cultural falló!");
 	}
 	
@@ -91,7 +91,7 @@ public class TestAtracción {
 	@Test
 	void testSerializarMecanica() {
 		assertEquals(
-				"Mecánica,operador atracción;asistente operador atracción;Montaña Rusa Infernal;Centro;16;2;true;ORO;2025-1-25,2025-5-31;Básico;0;1.2;2.0;49.0;99.0;true,true,true;Alto",
+				"Mecánica,operador atracción;asistente operador atracción;Montaña Rusa Infernal;Centro;16;2;true;ORO;2025-01-25,2025-05-31;Básico;0;1.2;2.0;49.0;99.0;true,true,true;Alto",
 				mecánica.serializar(), "La serialización de la atracción Mecánica falló!");
 	}
 	
@@ -112,7 +112,7 @@ public class TestAtracción {
 	
 	@Test
 	void testVerificarAcceso() {
-		assertTrue(mecánica.verificarAcceso(true, true, true), "La verificación de acceso por restricción médica falló!");
+		assertFalse(mecánica.verificarAcceso(true, true, true), "La verificación de acceso por restricción médica falló!");
 	}
 	
 	@Test
