@@ -13,9 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class SistemaParque {
-    
-    private IPersistencia persistencia;
 
+    private IPersistencia persistencia;
     private static SistemaParque instancia = null;
 
     public SistemaParque() {
@@ -75,6 +74,39 @@ public class SistemaParque {
 
     public void guardarLugares(List<LugarServicio> lugares) {
         persistencia.guardarLugares(lugares);
+    }
+
+    public void cargarDatos() {
+        getEmpleados();
+        getClientes();
+        getAdministradores();
+        getAtracciones();
+        getTiquetes();
+        getLugares();
+    }
+
+    public void guardarDatos() {
+        guardarEmpleados(getEmpleados());
+        guardarClientes(getClientes());
+        guardarAdministradores(getAdministradores());
+        guardarAtracciones(getAtracciones());
+        guardarTiquetes(getTiquetes());
+        guardarLugares(getLugares());
+    }
+
+    public void agregarEmpleado(Empleados nuevoEmpleado) {
+        List<Empleados> empleados = getEmpleados();
+        empleados.add(nuevoEmpleado);
+        guardarEmpleados(empleados);
+    }
+
+    public boolean eliminarEmpleado(String login) {
+        List<Empleados> empleados = getEmpleados();
+        boolean eliminado = empleados.removeIf(e -> e.getLogin().equals(login));
+        if (eliminado) {
+            guardarEmpleados(empleados);
+        }
+        return eliminado;
     }
 
     public void mostrarMenu() {

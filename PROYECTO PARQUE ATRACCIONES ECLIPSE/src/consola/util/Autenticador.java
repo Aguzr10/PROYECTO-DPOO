@@ -3,8 +3,6 @@ package consola.util;
 import parque.Administración.Administrador;
 import parque.Administración.Cliente;
 import parque.Administración.Empleados;
-
-
 import java.util.List;
 
 public class Autenticador {
