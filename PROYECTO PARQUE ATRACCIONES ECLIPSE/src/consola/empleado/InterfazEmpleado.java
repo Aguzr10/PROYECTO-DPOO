@@ -1,64 +1,34 @@
 package consola.empleado;
 
-import parque.Administración.Empleados;
+import consola.util.ConsolaUtils;
 import consola.util.SistemaParque;
-import parque.Tiquetes.Tiquete;
-import java.util.List;
-import java.util.Scanner;
+import parque.Administración.Empleados;
 
 public class InterfazEmpleado {
-    public static void iniciar(Empleados empleado, SistemaParque sistema) {
-        Scanner scanner = new Scanner(System.in);
-        boolean salir = false;
 
-        while (!salir) {
-            System.out.println("\n=== MENÚ EMPLEADO ===");
-            System.out.println("1. Ver lugar y turno asignado");
-            System.out.println("2. Validar tiquete");
-            System.out.println("3. Consultar información de atracción asignada");
-            System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
-            String opcion = scanner.nextLine();
+    public static void mostrarMenu(SistemaParque sistema, Empleados empleado) {
+        int opcion;
+        do {
+            System.out.println("\n--- Menú Empleado ---");
+            System.out.println("1. Ver información personal");
+            System.out.println("2. Consultar atracciones");
+            System.out.println("3. Cerrar sesión");
+
+            opcion = ConsolaUtils.leerOpcionMenu("Seleccione una opción: ", 1, 3);
 
             switch (opcion) {
-                case "1":
-                	System.out.println("Lugar: " + empleado.getLugarAsignado());
-                    System.out.println("Turno: " + empleado.getTurno());
+                case 1:
+                    System.out.println("Nombre: " + empleado.getNombre());
+                    System.out.println("Login: " + empleado.getLogin());
+                    System.out.println("Cargo: " + empleado.getClass().getSimpleName());
                     break;
-                case "2":
-                    List<Tiquete> tiquetes = sistema.getTiquetes();
-
-                    if (tiquetes.isEmpty()) {
-                        System.out.println("No hay tiquetes registrados.");
-                        break;
-                    }
-
-                    System.out.println("Seleccione el número del tiquete a validar:");
-                    for (int i = 0; i < tiquetes.size(); i++) {
-                        Tiquete t = tiquetes.get(i);
-                        System.out.println((i + 1) + ". " + t.getCategoriaTiquete() + " | Usado: " + (t.estaUsado() ? "Sí" : "No"));
-                    }
-
-                    try {
-                        int seleccion = Integer.parseInt(scanner.nextLine()) - 1;
-
-                        if (seleccion >= 0 && seleccion < tiquetes.size()) {
-                            Tiquete seleccionado = tiquetes.get(seleccion);
-                            if (!seleccionado.estaUsado()) {
-                                seleccionado.marcarTiquete();  
-                                System.out.println("Tiquete validado exitosamente.");
-                            } else {
-                                System.out.println("Este tiquete ya ha sido usado.");
-                            }
-                        } else {
-                            System.out.println("Selección inválida.");
-                        }
-                    } catch (NumberFormatException e) {
-                        System.out.println("Debe ingresar un número válido.");
-                    }
+                case 2:
+                    sistema.getAtracciones().forEach(a -> System.out.println("- " + a.getNombre()));
                     break;
-            	}
-        }
-        scanner.close();
+                case 3:
+                    System.out.println("Sesión cerrada.");
+                    break;
+            }
+        } while (opcion != 3);
     }
 }
