@@ -20,11 +20,11 @@ public class TestAdministración {
 				   
 				   nombreEmpleado = "Daneidy Barrera",
 				   loginEmpleado = "daneidy.852",
-				   passwordEmpleado = "dioDz4422",
+				   passwordEmpleado = "danB332",
 				   
 				   nombreCliente = "Diomedez Díaz",
 				   loginCliente = "diomedez.dz20",
-				   passwordCliente = "daGom4422",
+				   passwordCliente = "dioDz4422",
 				   
 				   lugarAsignado = "cafetería",
 				   turno = "Doble turno",
@@ -62,7 +62,7 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarCocinero() {
-		assertEquals("daneidy.852,dioDz4422,taquilla virtual,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15",
+		assertEquals("daneidy.852,danB332,taquilla virtual,Daneidy Barrera,Doble turno,cafetería,cocinera/cajera,0.15",
 				cocinero.serializar(), "La serialización del Cocinero no fue la esperada!");
 	}
 	@Test
@@ -73,7 +73,7 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarCliente() {
-		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,Diomedez Díaz,2,ORO,false,70000.0,false,DIAMANTE,false,100000.0,false", 
+		assertEquals("diomedez.dz20,dioDz4422,taquilla virtual,Diomedez Díaz,2,ORO,false,70000.0,false,DIAMANTE,false,100000.0,false", 
 				cliente.serializar(), "La serialización del Cliente no fue la esperada!");
 	}
 	

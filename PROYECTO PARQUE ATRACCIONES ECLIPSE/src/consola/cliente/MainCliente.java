@@ -1,33 +1,25 @@
 package consola.cliente;
 
 import consola.util.Autenticador;
+import consola.util.ConsolaUtils;
 import consola.util.SistemaParque;
-import consola.cliente.InterfazCliente;
 import parque.Administración.Cliente;
-import java.util.Scanner;
 
 public class MainCliente {
     public static void main(String[] args) {
-        SistemaParque sistema = new SistemaParque();
+        SistemaParque sistema = SistemaParque.getInstancia();
         sistema.cargarDatos();
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("==== Sistema Parque - Cliente ====");
-        System.out.print("Ingrese su usuario: ");
-        String login = scanner.nextLine();
-        System.out.print("Ingrese su contraseña: ");
-        String password = scanner.nextLine();
+        System.out.println("=== Inicio de Sesión - Cliente ===");
+        String usuario = ConsolaUtils.leerCadenaSinEspacios("Usuario: ");
+        String clave = ConsolaUtils.leerCadena("Clave: ");
 
-        Cliente cliente = Autenticador.autenticarCliente(login, password);
-
+        Cliente cliente = Autenticador.autenticarCliente(usuario, clave);
         if (cliente != null) {
             System.out.println("Bienvenido, " + cliente.getNombre() + ".");
-            InterfazCliente.iniciar(cliente, sistema);
+            InterfazCliente.mostrarMenu(sistema, cliente);
         } else {
-            System.out.println("Credenciales incorrectas. Intente de nuevo.");
+            System.out.println("Credenciales inválidas. Saliendo...");
         }
-
-        sistema.guardarDatos();
-        scanner.close();
     }
 }

@@ -1,55 +1,51 @@
 package consola.cliente;
 
-import parque.Administración.Cliente;
+import consola.util.ConsolaUtils;
 import consola.util.SistemaParque;
+import parque.Administración.Cliente;
 import parque.Tiquetes.Tiquete;
 
-import java.util.List;
-import java.util.Scanner;
-
 public class InterfazCliente {
-    public static void iniciar(Cliente cliente, SistemaParque sistema) {
-        Scanner scanner = new Scanner(System.in);
-        boolean salir = false;
 
-        while (!salir) {
-            System.out.println("\n=== MENÚ CLIENTE ===");
-            System.out.println("1. Ver atracciones disponibles");
-            System.out.println("2. Comprar tiquete");
-            System.out.println("3. Consultar historial de tiquetes");
-            System.out.println("4. Usar tiquete");
-            System.out.println("0. Salir");
-            System.out.print("Seleccione una opción: ");
-            String opcion = scanner.nextLine();
+    public static void mostrarMenu(SistemaParque sistema, Cliente cliente) {
+        int opcion;
+        do {
+            System.out.println("\n--- Menú Cliente ---");
+            System.out.println("1. Ver información personal");
+            System.out.println("2. Ver historial de compras");
+            System.out.println("3. Ver atracciones");
+            System.out.println("4. Cerrar sesión");
+
+            opcion = ConsolaUtils.leerOpcionMenu("Seleccione una opción: ", 1, 4);
 
             switch (opcion) {
-                case "1":
-                    sistema.getAtracciones().forEach(a ->
-                            System.out.println(a.getNombre() + " | Tipo: " + a.getClass().getSimpleName()));
+                case 1:
+                    System.out.println("Nombre: " + cliente.getNombre());
+                    System.out.println("Login: " + cliente.getLogin());
                     break;
-                case "2":
-                    System.out.println("Funcionalidad no implementada aún.");
-                    break;
-                case "3":
-                	List<Tiquete> tiquetes = cliente.getHistorialCompras();
-                    if (tiquetes.isEmpty()) {
-                        System.out.println("No tiene tiquetes en su historial.");
+
+                case 2:
+                    System.out.println("Historial de compras:");
+                    if (cliente.getHistorialCompras().isEmpty()) {
+                        System.out.println(" - No hay compras registradas.");
                     } else {
-                        for (Tiquete t : tiquetes) {
-                            System.out.println(t.toString());
+                        for (Tiquete t : cliente.getHistorialCompras()) {
+                            System.out.println(" - Categoría: " + t.getCategoriaTiquete() +
+                                               " | Precio: $" + t.getPrecio() +
+                                               " | Usado: " + (t.isUsoValidado() ? "Sí" : "No"));
                         }
                     }
                     break;
-                case "4":
-                    System.out.println("Funcionalidad no implementada aún.");
+
+                case 3:
+                    System.out.println("Atracciones disponibles:");
+                    sistema.getAtracciones().forEach(a -> System.out.println("- " + a.getNombre()));
                     break;
-                case "0":
-                    salir = true;
+
+                case 4:
+                    System.out.println("Sesión cerrada.");
                     break;
-                default:
-                    System.out.println("Opción inválida.");
             }
-        }
-        scanner.close();
+        } while (opcion != 4);
     }
 }
