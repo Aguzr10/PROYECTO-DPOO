@@ -1,27 +1,32 @@
+// MainAdmin.java
 package consola.administrador;
 
-import consola.util.ConsolaUtils;
-import consola.util.Autenticador;
 import parque.Administración.Administrador;
 import consola.util.SistemaParque;
+import consola.util.Autenticador;
+
+import java.util.Scanner;
 
 public class MainAdmin {
-
     public static void main(String[] args) {
-        SistemaParque sistema = SistemaParque.getInstancia();
+        SistemaParque sistema = new SistemaParque();
+        sistema.cargarDatos();  
 
-        System.out.println("=== Bienvenido, Administrador ===");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("==== Sistema Parque - Administrador ====");
+        System.out.print("Ingrese su usuario: ");
+        String login = scanner.nextLine();
+        System.out.print("Ingrese su contraseña: ");
+        String password = scanner.nextLine();
 
-        String usuario = ConsolaUtils.leerCadena("Ingrese su nombre de usuario: ");
-        String contrasena = ConsolaUtils.leerCadena("Ingrese su contraseña: ");
-
-        Administrador admin = Autenticador.autenticarAdministrador(usuario, contrasena);
-
-        if (admin != null) {
-            System.out.println("✅ Autenticación exitosa. Bienvenido, " + admin.getNombre());
-            InterfazAdmin.mostrarMenu(sistema, admin);
+        if (Autenticador.autenticarAdministrador(login, password) != null) {
+            System.out.println("Inicio de sesión exitoso.");
+            InterfazAdmin.mostrarMenu(sistema);
         } else {
-            System.out.println("❌ Autenticación fallida. Cerrando...");
+            System.out.println("Autenticación fallida. Verifique sus credenciales.");
         }
+
+        sistema.guardarDatos();  
+        scanner.close();
     }
 }
