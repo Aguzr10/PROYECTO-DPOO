@@ -11,6 +11,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="PROYECTO PARQUE ATRACCIONES ECLIPSE/src"/>
+	<classpathentry kind="src" path="PROYECTO PARQUE ATRACCIONES ECLIPSE/datos"/>
 	<classpathentry kind="src" path="PROYECTO PARQUE ATRACCIONES ECLIPSE/tests"/>
 	<classpathentry kind="output" path="PROYECTO PARQUE ATRACCIONES ECLIPSE/bin"/>
 </classpath>
