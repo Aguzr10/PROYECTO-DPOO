@@ -36,4 +36,14 @@ public class Autenticador {
         }
         return null;
     }
+    
+    public static Cliente autenticarCliente(SistemaParque sistema, String login, String password) {
+        for (Cliente cliente : sistema.getClientes()) {
+            if (cliente.getLogin().equals(login) && cliente.getPassword().equals(password)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
+    
 }
