@@ -57,7 +57,8 @@ public class InterfazEmpleado {
                         System.out.println("Debe ingresar un número válido.");
                     }
                     break;
-}
+            	}
         }
+        scanner.close();
     }
 }

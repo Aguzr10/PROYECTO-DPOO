@@ -138,6 +138,7 @@ public class SistemaParque {
                 System.out.println("Opción no válida.");
                 break;
         }
+        scanner.close();
     }
 
     private void iniciarSesion(String tipoUsuario) {
@@ -146,6 +147,7 @@ public class SistemaParque {
         String username = scanner.nextLine();
         System.out.print("Ingrese su contraseña: ");
         String password = scanner.nextLine();
+        scanner.close();
 
         boolean autenticado = false;
         switch (tipoUsuario) {

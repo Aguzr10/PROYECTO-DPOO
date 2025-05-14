@@ -50,5 +50,6 @@ public class InterfazCliente {
                     System.out.println("Opción inválida.");
             }
         }
+        scanner.close();
     }
 }

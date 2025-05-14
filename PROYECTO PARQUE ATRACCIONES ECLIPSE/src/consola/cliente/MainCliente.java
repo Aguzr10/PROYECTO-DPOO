@@ -28,5 +28,6 @@ public class MainCliente {
         }
 
         sistema.guardarDatos();
+        scanner.close();
     }
 }

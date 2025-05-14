@@ -27,5 +27,6 @@ public class MainAdmin {
         }
 
         sistema.guardarDatos();  
+        scanner.close();
     }
 }

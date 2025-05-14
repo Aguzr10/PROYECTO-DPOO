@@ -28,5 +28,6 @@ public class MainEmpleado {
         }
 
         sistema.guardarDatos();
+        scanner.close();
     }
 }
