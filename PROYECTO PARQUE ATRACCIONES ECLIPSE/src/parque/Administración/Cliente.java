@@ -36,4 +36,12 @@ public class Cliente extends Usuario implements Serializable {
             System.out.println(" - " + t.getCategoriaTiquete());
         }
     }
+    
+    public String generarHistorial() {
+    	String historial = "Historial de compras de " + login + ":";
+        for (Tiquete t : historialCompras) {
+            historial += " - " + t.getCategoriaTiquete();
+        }
+		return historial;
+    }
 }
