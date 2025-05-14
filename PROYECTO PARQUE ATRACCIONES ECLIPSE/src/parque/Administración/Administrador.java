@@ -18,7 +18,6 @@ public class Administrador extends Usuario implements Serializable {
     public Administrador(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, double descuentoEmpleado, String nombre) {
         super(login, password, tiquetesComprados, metodoCompra, nombre); 
         this.descuentoEmpleado = descuentoEmpleado;
-        this.nombre = nombre;
     }
 
     public double getDescuentoEmpleado() {
