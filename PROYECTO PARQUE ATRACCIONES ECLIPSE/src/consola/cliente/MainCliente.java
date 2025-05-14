@@ -19,7 +19,7 @@ public class MainCliente {
         System.out.print("Ingrese su contraseña: ");
         String password = scanner.nextLine();
 
-        Cliente cliente = Autenticador.autenticarCliente(sistema, login, password);
+        Cliente cliente = Autenticador.autenticarCliente(login, password);
 
         if (cliente == null) {
             System.out.println("Cliente no encontrado. ¿Desea registrarse? (s/n): ");

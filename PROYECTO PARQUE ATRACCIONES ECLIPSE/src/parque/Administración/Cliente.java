@@ -17,6 +17,12 @@ public class Cliente extends Usuario implements Serializable {
         this.historialCompras = historialCompras != null ? historialCompras : new ArrayList<>();
     }
 
+   
+    public Cliente(String login, String password, String metodoCompra, String nombre) {
+        super(login, password, new ArrayList<>(), metodoCompra, nombre);
+        this.historialCompras = new ArrayList<>();
+    }
+
     public List<Tiquete> getHistorialCompras() {
         return historialCompras;
     }
@@ -36,12 +42,12 @@ public class Cliente extends Usuario implements Serializable {
             System.out.println(" - " + t.getCategoriaTiquete());
         }
     }
-    
+
     public String generarHistorial() {
-    	String historial = "Historial de compras de " + login + ":";
+        String historial = "Historial de compras de " + login + ":";
         for (Tiquete t : historialCompras) {
             historial += " - " + t.getCategoriaTiquete();
         }
-		return historial;
+        return historial;
     }
 }
