@@ -6,7 +6,7 @@ import java.util.List;
 
 import parque.Tiquetes.Tiquete;
 
-public abstract class Empleados extends Usuario implements Serializable {
+public class Empleados extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
