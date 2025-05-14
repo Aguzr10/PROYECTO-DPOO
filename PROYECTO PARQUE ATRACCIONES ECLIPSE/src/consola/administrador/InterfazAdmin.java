@@ -7,6 +7,7 @@ import parque.Servicios.Cajero;
 import parque.Tiquetes.Tiquete;
 import consola.util.SistemaParque;
 import consola.util.Autenticador;
+import consola.util.ConsolaUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class InterfazAdmin {
                 case "1":
                     mostrarEmpleados(sistema);
                     break;
-                case 2:
+                case "2":
                     String nombre = ConsolaUtils.leerCadena("Nombre: ");
                     String login = ConsolaUtils.leerCadenaSinEspacios("Login: ");
                     String clave = ConsolaUtils.leerCadena("Contraseña: ");
