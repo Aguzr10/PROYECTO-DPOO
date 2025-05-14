@@ -22,6 +22,7 @@ public class TestAdministración {
 				   loginEmpleado = "daneidy.852",
 				   passwordEmpleado = "dioDz4422",
 				   
+				   nombreCliente = "Diomedez Díaz",
 				   loginCliente = "diomedez.dz20",
 				   passwordCliente = "daGom4422",
 				   
@@ -48,7 +49,7 @@ public class TestAdministración {
 		cocinero = new Cocinero(loginEmpleado, passwordEmpleado, tiquetesComprados, metodoCompra,
 				                nombreEmpleado, turno, lugarAsignado, rol, descuentoEmpleado);
 
-		cliente = new Cliente(loginCliente, passwordCliente, tiquetesComprados, metodoCompra, historialCompras);
+		cliente = new Cliente(loginCliente, passwordCliente, tiquetesComprados, metodoCompra, nombreCliente, historialCompras);
 		cliente.agregarCompra(tiqueteOro);
 		cliente.agregarCompra(tiqueteDiamante);
 	}
@@ -72,7 +73,7 @@ public class TestAdministración {
 	
 	@Test
 	void testSerializarCliente() {
-		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,2,ORO,false,70000.0,false,DIAMANTE,false,100000.0,false", 
+		assertEquals("diomedez.dz20,daGom4422,taquilla virtual,Diomedez Díaz,2,ORO,false,70000.0,false,DIAMANTE,false,100000.0,false", 
 				cliente.serializar(), "La serialización del Cliente no fue la esperada!");
 	}
 	
