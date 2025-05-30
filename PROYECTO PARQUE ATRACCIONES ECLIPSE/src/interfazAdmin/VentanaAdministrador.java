@@ -3,8 +3,8 @@ package interfazAdmin;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.util.List;
 import consola.util.SistemaParque;
 import parque.Administración.Administrador;
@@ -16,13 +16,11 @@ public class VentanaAdministrador extends JFrame {
     private Administrador administrador;
     private SistemaParque sistema;
     
-
     private JButton botonVerUsuarios;
     private JButton botonVerAtracciones;
     private JButton botonVerTiquetes;
     private JButton botonSalir;
     
-
     private JTable tablaAtracciones;
     private DefaultTableModel modeloAtracciones;
     private JTextArea areaUsuarios;
@@ -37,16 +35,39 @@ public class VentanaAdministrador extends JFrame {
     }
     
     private void inicializarComponentes() {
-
         botonVerUsuarios = new JButton("Ver usuarios");
         botonVerAtracciones = new JButton("Ver atracciones");
         botonVerTiquetes = new JButton("Ver tiquetes");
         botonSalir = new JButton("Salir");
 
-        configurarBoton(botonVerUsuarios, e -> mostrarUsuarios());
-        configurarBoton(botonVerAtracciones, e -> mostrarAtracciones());
-        configurarBoton(botonVerTiquetes, e -> mostrarTiquetes());
-        configurarBoton(botonSalir, e -> salir());
+        botonVerUsuarios.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mostrarUsuarios();
+            }
+        });
+        
+        botonVerAtracciones.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               mostrarAtracciones();
+           }
+        });
+        
+        botonVerTiquetes.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                mostrarTiquetes();
+            }
+        });
+        
+        botonSalir.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent e) {
+               salir();
+           }
+        });
+        
+        botonVerUsuarios.setPreferredSize(new Dimension(120, 30));
+        botonVerAtracciones.setPreferredSize(new Dimension(120, 30));
+        botonVerTiquetes.setPreferredSize(new Dimension(120, 30));
+        botonSalir.setPreferredSize(new Dimension(120, 30));
         
         String[] columnasAtracciones = {"Nombre", "Tipo", "Exclusiva"};
         modeloAtracciones = new DefaultTableModel(columnasAtracciones, 0) {
@@ -62,11 +83,6 @@ public class VentanaAdministrador extends JFrame {
         areaUsuarios.setEditable(false);
         areaUsuarios.setBackground(Color.WHITE);
         areaUsuarios.setBorder(BorderFactory.createLoweredBevelBorder());
-    }
-    
-    private void configurarBoton(JButton boton, ActionListener accion) {
-        boton.addActionListener(accion);
-        boton.setPreferredSize(new Dimension(120, 30));
     }
     
     private void configurarVentana() {
@@ -101,7 +117,6 @@ public class VentanaAdministrador extends JFrame {
         panelCentral.setBackground(Color.WHITE);
        
         JPanel panelAtracciones = crearSeccionAtracciones();
-        
         JPanel panelUsuarios = crearSeccionUsuarios();
         
         panelCentral.add(panelAtracciones);
@@ -125,7 +140,6 @@ public class VentanaAdministrador extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         
-
         JLabel titulo = new JLabel("Atracciones");
         titulo.setFont(new Font("Arial", Font.BOLD, 14));
         
@@ -181,10 +195,10 @@ public class VentanaAdministrador extends JFrame {
         if (empleados.isEmpty()) {
             texto.append("No hay empleados registrados.\n");
         } else {
-            for (Empleados emp : empleados) {
-                texto.append(String.format("• %s (%s) - %s\n", 
-                    emp.getNombre(), emp.getLogin(), emp.getRol()));
-            }
+           for (Empleados emp : empleados) {
+               texto.append(String.format("• %s (%s) - %s\n", 
+                   emp.getNombre(), emp.getLogin(), emp.getRol()));
+           }
         }
         
         areaUsuarios.setText(texto.toString());
@@ -196,10 +210,7 @@ public class VentanaAdministrador extends JFrame {
     }
     
     private void mostrarAtracciones() {
-        JOptionPane.showMessageDialog(this, 
-            "Falta implementar", 
-            "Información", 
-            JOptionPane.INFORMATION_MESSAGE);
+        new VentanaGestionAtracciones(this).setVisible(true);
     }
     
     private void mostrarTiquetes() {
@@ -216,8 +227,8 @@ public class VentanaAdministrador extends JFrame {
             JOptionPane.YES_NO_OPTION);
         
         if (opcion == JOptionPane.YES_OPTION) {
-            sistema.guardarDatos();
-            System.exit(0);
+           sistema.guardarDatos();
+           System.exit(0);
         }
     }
     
