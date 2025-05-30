@@ -62,6 +62,7 @@ public class VentanaGestionAtracciones extends JFrame {
         comboTipo = new JComboBox<>();
         comboTipo.addItem("AtraccionMecanica");
         comboTipo.addItem("AtraccionCultural");
+        comboTipo.addItem("Espectaculo");
         
         comboCategoria = new JComboBox<>();
         comboCategoria.addItem("BASICO");

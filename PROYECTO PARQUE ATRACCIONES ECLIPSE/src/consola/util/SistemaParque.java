@@ -124,7 +124,14 @@ public class SistemaParque {
     }
     
     public boolean eliminarEmpleado(String login) {
-        boolean eliminado = empleados.removeIf(e -> e.getLogin().equals(login));
+        boolean eliminado = false;
+        for(int i = 0; i < empleados.size(); i++) {
+            if(empleados.get(i).getLogin().equals(login)) {
+                empleados.remove(i);
+                eliminado = true;
+                break;
+            }
+        }
         if (eliminado) {
             persistencia.guardarEmpleados(empleados);
         }
@@ -132,7 +139,12 @@ public class SistemaParque {
     }
     
     public boolean existeEmpleado(String login) {
-        return empleados.stream().anyMatch(e -> e.getLogin().equals(login));
+        for(int i = 0; i < empleados.size(); i++) {
+            if(empleados.get(i).getLogin().equals(login)) {
+                return true;
+            }
+        }
+        return false;
     }
     
     public void mostrarMenu() {
