@@ -1,4 +1,4 @@
-// InterfazAdmin.java
+
 package consola.administrador;
 
 import parque.Administración.Administrador;

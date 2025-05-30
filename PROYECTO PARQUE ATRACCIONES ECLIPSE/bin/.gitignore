@@ -1,6 +1,4 @@
-/administradores.dat
-/atracciones.dat
-/clientes.dat
-/empleados.dat
-/lugares.dat
-/tiquetes.dat
+/consola/
+/gui/
+/parque/
+/interfazAdmin/
