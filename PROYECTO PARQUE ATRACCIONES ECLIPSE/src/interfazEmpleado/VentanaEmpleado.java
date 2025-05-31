@@ -3,6 +3,7 @@ package interfazEmpleado;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.io.IOException;
 import java.util.List;
 import parque.Atracción.Atracciones;
 import parque.Administración.Empleados;
@@ -43,7 +44,13 @@ public class VentanaEmpleado extends JFrame {
         });
 
         botonVerVentas.addActionListener(e -> {
-            VentanaVentas ventanaVentas = new VentanaVentas();
+            VentanaVentas ventanaVentas = null;
+			try {
+				ventanaVentas = new VentanaVentas();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             ventanaVentas.setVisible(true);
         });
 

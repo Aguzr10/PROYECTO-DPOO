@@ -1,6 +1,7 @@
 package parque.Tiquetes;
 
 import java.io.Serializable;
+import java.util.UUID;
 import parque.Atracción.Atracciones;
 import parque.Categorías.Categoria;
 
@@ -11,10 +12,15 @@ public abstract class Tiquete implements Serializable {
     protected boolean usoValidado;
     protected double precio;
 
+    private final String id;
+    private boolean impreso;
+
     public Tiquete(Categoria categoriaTiquete, boolean usoValidado, double precio) {
         this.categoriaTiquete = categoriaTiquete;
         this.usoValidado = usoValidado;
         this.precio = precio;
+        this.id = UUID.randomUUID().toString(); // Genera ID único
+        this.impreso = false;
     }
 
     public Categoria getCategoriaTiquete() {
@@ -41,6 +47,22 @@ public abstract class Tiquete implements Serializable {
         this.precio = precio;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public boolean estaUsado() {
+        return usoValidado;
+    }
+
+    public boolean estaImpreso() {
+        return impreso;
+    }
+
+    public void marcarImpreso() {
+        this.impreso = true;
+    }
+
     public boolean verificarValidez() {
         return !usoValidado;
     }
@@ -53,7 +75,9 @@ public abstract class Tiquete implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append(categoriaTiquete).append(",");
         sb.append(usoValidado).append(",");
-        sb.append(precio);
+        sb.append(precio).append(",");
+        sb.append(id).append(",");
+        sb.append(impreso);
         return sb.toString();
     }
 
@@ -61,14 +85,10 @@ public abstract class Tiquete implements Serializable {
         return linea.split(",");
     }
 
-    public boolean estaUsado() {
-        return usoValidado;
-    }
-
     public boolean verificaAcceso(Atracciones atraccion) {
-        if (atraccion.getCategoria() instanceof Categoria) {            
-            return this.categoriaTiquete.permiteAcceso((Categoria) atraccion.getCategoria());        }
+        if (atraccion.getCategoria() instanceof Categoria) {
+            return this.categoriaTiquete.permiteAcceso((Categoria) atraccion.getCategoria());
+        }
         return false; 
     }
-
 }
