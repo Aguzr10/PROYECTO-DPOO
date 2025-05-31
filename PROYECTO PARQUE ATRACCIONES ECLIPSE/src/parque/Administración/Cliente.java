@@ -11,16 +11,23 @@ public class Cliente extends Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private List<Tiquete> historialCompras;
+    private String correo;  
 
-    public Cliente(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre, List<Tiquete> historialCompras) {
+    public Cliente(String login, String password, List<Tiquete> tiquetesComprados, String metodoCompra, String nombre, List<Tiquete> historialCompras, String correo) {
         super(login, password, tiquetesComprados, metodoCompra, nombre); 
         this.historialCompras = historialCompras != null ? historialCompras : new ArrayList<>();
+        this.correo = correo; 
     }
 
-   
-    public Cliente(String login, String password, String metodoCompra, String nombre) {
-        super(login, password, new ArrayList<>(), metodoCompra, nombre);
+    public Cliente(String login, String nombre, String metodoCompra, String correo) {
+        super(login, null, new ArrayList<>(), metodoCompra, nombre);
         this.historialCompras = new ArrayList<>();
+        this.correo = correo; 
+    }
+
+    
+    public String getCorreo() {
+        return correo;
     }
 
     public List<Tiquete> getHistorialCompras() {

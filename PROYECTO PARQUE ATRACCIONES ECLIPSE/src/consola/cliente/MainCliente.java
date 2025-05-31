@@ -28,7 +28,7 @@ public class MainCliente {
                 System.out.print("Ingrese su nombre: ");
                 String nombre = scanner.nextLine();
 
-                cliente = new Cliente(login, password, null, "online", nombre, null);
+                cliente = new Cliente(login, password, null, "online", nombre, null, null);
                 sistema.getClientes().add(cliente);
                 sistema.guardarDatos();
                 System.out.println("Registro exitoso. Iniciando sesión...");

@@ -50,7 +50,7 @@ public class TestAdministración {
 		cocinero = new Cocinero(loginEmpleado, passwordEmpleado, tiquetesComprados, metodoCompra,
 				                nombreEmpleado, turno, lugarAsignado, rol, descuentoEmpleado);
 
-		cliente = new Cliente(loginCliente, passwordCliente, tiquetesComprados, metodoCompra, nombreCliente, historialCompras);
+		cliente = new Cliente(loginCliente, passwordCliente, tiquetesComprados, metodoCompra, nombreCliente, historialCompras, null);
 		cliente.agregarCompra(tiqueteOro);
 		cliente.agregarCompra(tiqueteDiamante);
 	}
